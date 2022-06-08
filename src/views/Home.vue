@@ -30,13 +30,7 @@
 </template>
 
 <script lang="ts">
-import { ref, onMounted } from "vue";
-import PlayList from "@/components/PlayList.vue";
-import { swiperList, NavName } from "@/enums";
-import { HttpManager } from "@/api";
-import mixin from "@/mixins/mixin";
-import { SetUp } from "@element-plus/icons-vue/dist/types";
-import { defineComponent, reactive, getCurrentInstance } from "vue";
+import { defineComponent } from "vue";
 import pageA from "@/views/pageA.vue";
 import pageB from "@/views/pageB.vue";
 import pageC from "@/views/pageC.vue";
@@ -101,14 +95,6 @@ export default defineComponent({
       },1000)
     }
   },
-  setup(){
-    /**
-     * 鼠标滚轮事件
-     * 滚轮触发的时候应该给子组件传一个标识表示页面是从哪个页面出发的
-     */
-  
-    
-  },
   mounted(){
     let queryObj = this.$route.query
     if(JSON.stringify(queryObj) == "{}"){
@@ -130,35 +116,29 @@ export default defineComponent({
   height: 100%;
 }
 </style>
-
 <style lang="scss" scoped>
 @import "@/assets/css/var.scss";
-
 /*carousel容器*/
 .container-main{
   width: 100%;
   height: 100%;
-  background-color: red;
+  background-color: rgb(59, 44, 44);
   min-height: 720px;
 }
 .carousel-item-page-a{
   background-color: #2a1414;
 }
 .carousel-item-page-b{
-  background-color: #dd40d5;
+  background-color: #4e314d;
 }
 .carousel-item-page-c{
-  background-color: #8f92bc;
+  background-color: #494b6e;
 }
 .carousel-item-page-d{
-  background-color: #bc8f8f;
+  background-color: #5f4a4a;
 }
-
-
 /*轮播图*/
 .swiper-container {
   height: 100%;
 }
-
-
 </style>

@@ -6,8 +6,9 @@
     <div class="page-a-index-butn" :class="{activeButn:active}">
       
     </div>
-    <div class="page-a-index-bg"><video src="@/assets/video/index-vdo.mp4" autoplay="autoplay" loop="loop" muted="muted" ></video></div>
-    
+    <div class="page-a-index-bg">
+      <!-- <video src="@/assets/video/index-vdo.mp4" autoplay="autoplay" loop="loop" muted="muted" ></video> -->
+    </div>
   </div>
 </template>
 
@@ -20,9 +21,6 @@ export default defineComponent({
       
     }
   },
-  // mounted(){
-    
-  // },
   computed:{
     active(){
       let activetag = this.$props.pageidx
