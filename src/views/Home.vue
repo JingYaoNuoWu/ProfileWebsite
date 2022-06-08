@@ -1,14 +1,15 @@
 <template>
   <div class="container-main" >
-    <home-top-bar :pageidx="pageindex"></home-top-bar>
-    <el-carousel 
+    <home-top-bar :pageidx="pageindex" @changePage="b($event)"></home-top-bar>
+    <el-carousel
     class="swiper-container" 
     direction="vertical" 
     indicator-position="none"
-    ref="carousel" 
+    ref="carousel"
     :autoplay="false"
     :initial-index="pageindex"
     @wheel="flag && a($event)"
+    :loop="false"
     >
       <el-carousel-item class="carousel-item-page-a">
         <page-a :pageidx="pageindex"></page-a>
@@ -26,7 +27,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from "vue";
 import pageA from "@/views/pageA.vue";
 import pageB from "@/views/pageB.vue";
@@ -37,6 +38,7 @@ export default defineComponent({
   components:{
     pageA,pageB,pageC,pageD,HomeTopBar
   },
+  emits:["changePage"],
   data(){
     return{
       flag:true,//防抖节流
@@ -44,7 +46,7 @@ export default defineComponent({
     }
   },
   methods:{
-    a(this: any, e:any){
+    a(e){
       if(e.wheelDelta<0){
         switch(this.pageindex){
           case 0:
@@ -90,6 +92,31 @@ export default defineComponent({
       setTimeout(()=>{
         this.flag = true
       },1000)
+    },
+    b(index){
+      debugger
+      switch(index){
+          case 0:
+            this.pageindex = index
+            history.replaceState({},"","?page=1")
+            this.$refs.carousel.setActiveItem(0)
+          break;
+          case 1:
+            this.pageindex = index
+            history.replaceState({},"","?page=2")
+            this.$refs.carousel.setActiveItem(1)
+          break;
+          case 2:
+            this.pageindex = index
+            history.replaceState({},"","?page=3")
+            this.$refs.carousel.setActiveItem(2)
+          break;
+          case 3:
+            this.pageindex = index
+            history.replaceState({},"","?page=4")
+            this.$refs.carousel.setActiveItem(3)
+          break;
+        }
     }
   },
   mounted(){
