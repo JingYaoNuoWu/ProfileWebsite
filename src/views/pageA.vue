@@ -24,7 +24,6 @@ export default defineComponent({
   computed:{
     active(){
       let activetag = this.$props.pageidx
-      console.log(this.$props);
       return activetag == 0 ? true : false
     },
   }

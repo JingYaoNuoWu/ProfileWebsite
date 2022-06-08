@@ -6,6 +6,38 @@
       </a>
     </div>
     <div class="topbarcontent">
+      <a class="topbarlink"  @click="jump($event)" href="/">
+        <span v-show="!(pageidx==0)">
+          首页
+        </span>
+        <b v-show="(pageidx==0)">
+          首页
+        </b>
+      </a>
+      <div class="topbarlink">
+        <span v-show="!(pageidx==1)">
+          2
+        </span>
+        <b v-show="(pageidx==1)">
+          2
+        </b>
+      </div>
+      <div class="topbarlink">
+        <span v-show="!(pageidx==2)">
+          3
+        </span>
+        <b v-show="(pageidx==2)">
+          3
+        </b>
+      </div>
+      <div class="topbarlink">
+        <span v-show="!(pageidx==3)">
+          4
+        </span>
+        <b v-show="(pageidx==3)">
+          4
+        </b>
+      </div>
       
     </div>
     
@@ -19,6 +51,11 @@ export default defineComponent({
   data(){
     return{
 
+    }
+  },
+  methods:{
+    jump(e){
+      e.preventDefault()
     }
   },
   computed:{
@@ -39,22 +76,38 @@ export default defineComponent({
     position:fixed;
     top:0px;
     width: 100%;
-    height: 70px;
+    height: .7rem;
     background-color: white;
     z-index: 10;
     opacity: 0;
     transition: 100ms;
     justify-content: space-between;
+    div{
+      margin: 0 .3rem;
+    }
     .topbarcontent{
-      height: 20px;
+      height: .25rem;
+      display: flex;
+      .topbarlink{
+        padding: .05rem;
+        user-select: none;
+        cursor: pointer;
+        margin-left: .4rem;
+      }
+      div :hover{
+        color: blue;
+      }
     }
     .topbarlogo{
       a{
         display: inline-block;
       }
+      b{
+        color: blue;
+      }
     }
     img{
-      height: 3rem;
+      height: .5rem;
     }
   }
   .activeTopBar{
