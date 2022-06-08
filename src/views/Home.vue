@@ -1,9 +1,6 @@
 <template>
   <div class="container-main" >
     <home-top-bar :pageidx="pageindex"></home-top-bar>
-    <div style="position:fixed;z-index:20">
-      {{ pageindex }}{{flag}}
-    </div>
     <el-carousel 
     class="swiper-container" 
     direction="vertical" 
