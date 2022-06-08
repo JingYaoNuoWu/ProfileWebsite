@@ -1,6 +1,6 @@
 <template>
   <div class="container-main" >
-    <home-top-bar :pageidx="pageindex" @changePage="b($event)"></home-top-bar>
+    <home-top-bar :pageidx="pageindex" @changePage="b($event,x)"></home-top-bar>
     <el-carousel
     class="swiper-container" 
     direction="vertical" 
@@ -93,8 +93,9 @@ export default defineComponent({
         this.flag = true
       },1000)
     },
-    b(index){
-      debugger
+    b(x){
+      // console.log(e);
+      let index = x.a
       switch(index){
           case 0:
             this.pageindex = index

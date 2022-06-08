@@ -6,7 +6,7 @@
       </a>
     </div>
     <div class="topbarcontent">
-      <a class="topbarlink"  @click="$emit('changePage',0)" href="/">
+      <a class="topbarlink"  @click="$emit('changePage',{ $event , a:0})" href="/">
         <span v-show="!(pageidx==0)">
           首页
         </span>
@@ -14,7 +14,7 @@
           首页
         </b>
       </a>
-      <div class="topbarlink" @click="$emit('changePage',1)">
+      <div class="topbarlink" @click="$emit('changePage',{$event,a:1})">
         <span v-show="!(pageidx==1)">
           2
         </span>
@@ -22,7 +22,7 @@
           2
         </b>
       </div>
-      <div class="topbarlink" @click="$emit('changePage',2)">
+      <div class="topbarlink" @click="$emit('changePage',{$event,a:2})">
         <span v-show="!(pageidx==2)">
           3
         </span>
@@ -30,7 +30,7 @@
           3
         </b>
       </div>
-      <div class="topbarlink" @click="$emit('changePage',3)">
+      <div class="topbarlink" @click="$emit('changePage',{$event,a:3})">
         <span v-show="!(pageidx==3)">
           4
         </span>
