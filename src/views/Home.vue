@@ -94,31 +94,34 @@ export default defineComponent({
       },1000)
     },
     b(x){
-      // console.log(e);
+      if(this.$route.path == "/"){
+        x.$event.preventDefault()
+      }
       let index = x.a
       switch(index){
-          case 0:
-            this.pageindex = index
-            history.replaceState({},"","?page=1")
-            this.$refs.carousel.setActiveItem(0)
-          break;
-          case 1:
-            this.pageindex = index
-            history.replaceState({},"","?page=2")
-            this.$refs.carousel.setActiveItem(1)
-          break;
-          case 2:
-            this.pageindex = index
-            history.replaceState({},"","?page=3")
-            this.$refs.carousel.setActiveItem(2)
-          break;
-          case 3:
-            this.pageindex = index
-            history.replaceState({},"","?page=4")
-            this.$refs.carousel.setActiveItem(3)
-          break;
-        }
-    }
+        case 0:
+          this.pageindex = index
+          history.replaceState({},"","?page=1")
+          this.$refs.carousel.setActiveItem(0)
+        break;
+        case 1:
+          this.pageindex = index
+          history.replaceState({},"","?page=2")
+          this.$refs.carousel.setActiveItem(1)
+        break;
+        case 2:
+          this.pageindex = index
+          history.replaceState({},"","?page=3")
+          this.$refs.carousel.setActiveItem(2)
+        break;
+        case 3:
+          this.pageindex = index
+          history.replaceState({},"","?page=4")
+          this.$refs.carousel.setActiveItem(3)
+        break;
+      }
+    },
+    
   },
   mounted(){
     let queryObj = this.$route.query

@@ -4,12 +4,7 @@
 
 <script lang="ts">
 import {defineComponent,getCurrentInstance, onBeforeMount, onMounted } from "vue";
-// import YinHeader from "@/components/layouts/YinHeader.vue";
-// import YinCurrentPlay from "@/components/layouts/YinCurrentPlay.vue";
-// import YinPlayBar from "@/components/layouts/YinPlayBar.vue";
-// import YinScrollTop from "@/components/layouts/YinScrollTop.vue";
-// import YinFooter from "@/components/layouts/YinFooter.vue";
-// import YinAudio from "@/components/layouts/YinAudio.vue";
+
 import Home from "@/views/Home.vue";
 export default{
   components: { Home },

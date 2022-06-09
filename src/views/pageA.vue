@@ -26,7 +26,7 @@ export default defineComponent({
       let activetag = this.$props.pageidx
       return activetag == 0 ? true : false
     },
-  }
+  },
   
 })
 </script>
