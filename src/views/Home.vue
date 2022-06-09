@@ -1,21 +1,21 @@
 <template>
   <div class="container-main" >
-    <home-top-bar :pageidx="pageindex" @changePage="b($event,x)"></home-top-bar>
+    <home-top-bar :pageidx="CarouselIndex" @changePage="b($event,x)"></home-top-bar>
     <el-carousel
     class="swiper-container" 
     direction="vertical" 
     indicator-position="none"
     ref="carousel"
     :autoplay="false"
-    :initial-index="pageindex"
+    :initial-index="CarouselIndex"
     @wheel="flag && a($event)"
     :loop="false"
     >
       <el-carousel-item class="carousel-item-page-a">
-        <page-a :pageidx="pageindex"></page-a>
+        <page-a :pageidx="CarouselIndex"></page-a>
       </el-carousel-item>
       <el-carousel-item class="carousel-item-page-b">
-        <page-b :pageidx="pageindex"></page-b>
+        <page-b :pageidx="CarouselIndex" @DeliverCount="GetSlideCount(count)"></page-b>
       </el-carousel-item>
       <el-carousel-item class="carousel-item-page-c">
         <page-c></page-c>
@@ -42,25 +42,27 @@ export default defineComponent({
   data(){
     return{
       flag:true,//防抖节流
-      pageindex:0, //判断初始页面
+      CarouselIndex:0, //页面索引
+      SlideCurrentPage:0, //carousel定时器参数
+      SlideCount:0 //第二页Slide的数量
     }
   },
   methods:{
     a(e){
       if(e.wheelDelta<0){
-        switch(this.pageindex){
+        switch(this.CarouselIndex){
           case 0:
-            this.pageindex++
+            this.CarouselIndex++
             history.replaceState({},"","?page=2")
             this.$refs.carousel.setActiveItem(1)
           break;
           case 1:
-            this.pageindex++
+            this.CarouselIndex++
             history.replaceState({},"","?page=3")
             this.$refs.carousel.setActiveItem(2)
           break;
           case 2:
-            this.pageindex++
+            this.CarouselIndex++
             history.replaceState({},"","?page=4")
             this.$refs.carousel.setActiveItem(3)
           break;
@@ -68,21 +70,21 @@ export default defineComponent({
           break;
         }
         }else{
-          switch(this.pageindex){
+          switch(this.CarouselIndex){
             case 0:
             break;
             case 1:
-              this.pageindex--
+              this.CarouselIndex--
               history.replaceState({},"","?page=1")
               this.$refs.carousel.setActiveItem(0)
             break;
             case 2:
-              this.pageindex--
+              this.CarouselIndex--
               history.replaceState({},"","?page=2")
               this.$refs.carousel.setActiveItem(1)
             break;
             case 3:
-              this.pageindex--
+              this.CarouselIndex--
               history.replaceState({},"","?page=3")
               this.$refs.carousel.setActiveItem(2)
             break;
@@ -100,41 +102,55 @@ export default defineComponent({
       let index = x.a
       switch(index){
         case 0:
-          this.pageindex = index
+          this.CarouselIndex = index
           history.replaceState({},"","?page=1")
           this.$refs.carousel.setActiveItem(0)
         break;
         case 1:
-          this.pageindex = index
+          this.CarouselIndex = index
           history.replaceState({},"","?page=2")
           this.$refs.carousel.setActiveItem(1)
         break;
         case 2:
-          this.pageindex = index
+          this.CarouselIndex = index
           history.replaceState({},"","?page=3")
           this.$refs.carousel.setActiveItem(2)
         break;
         case 3:
-          this.pageindex = index
+          this.CarouselIndex = index
           history.replaceState({},"","?page=4")
           this.$refs.carousel.setActiveItem(3)
         break;
       }
     },
+    //第二页carousel定时器
+    CarouselInterval(){
+      let currentpageindex = this.SlideCurrentPage-1
+      let index = this.SlideCount-1
+      if(currentpageindex < index){
+        currentpageindex ++
+      }else{
+        currentpageindex = 0
+      }
+      this.SlideCurrentPage = currentpageindex + 1
+    },
+    GetSlideCount(count){
+      this.SlideCount = count
+    }
     
   },
   mounted(){
     let queryObj = this.$route.query
     if(JSON.stringify(queryObj) == "{}"){
-      this.pageindex = 0
+      this.CarouselIndex = 0
     }else if( queryObj.page == "1" ){ 
-      this.pageindex = 0
+      this.CarouselIndex = 0
     }else if( queryObj.page == "2" ){
-      this.pageindex = 1
+      this.CarouselIndex = 1
     }else if( queryObj.page == "3" ){
-      this.pageindex = 2
+      this.CarouselIndex = 2
     }else if( queryObj.page == "4" ){
-      this.pageindex = 3
+      this.CarouselIndex = 3
     }
   }
 })

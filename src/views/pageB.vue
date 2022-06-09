@@ -1,10 +1,26 @@
 <template>
   <div class="container-main-page-b">
-    <div class="activeTextContainer" :class="{activeText:active}">
-      <div class="titleContainer"></div>
-      <span>GitHub</span>
-      <span>地址</span>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" :class="{'swiper-slide-active':ActiveSlide == 0}"></div>
+        <div class="swiper-slide" :class="{'swiper-slide-active':ActiveSlide == 1}"></div>
+        <div class="swiper-slide" :class="{'swiper-slide-active':ActiveSlide == 2}"></div>
+      </div>
     </div>
+    <!-- <div class="activeTextContainer" >
+      <transition name="contentContainer-b-active">
+        <div class="contentContainer-b" v-if="active">
+          <img src="@/assets/images/code.jpg" alt="">
+        </div>
+      </transition>
+      <transition name="titleContainer-b-active">
+        <div class="titleContainer-b" v-if="active">
+          <h1>记录本</h1>
+          <span>GitHub</span>
+          <span>博客园地址</span>
+        </div>
+      </transition>
+    </div> -->
   </div>
 </template>
 
@@ -12,51 +28,79 @@
 import { defineComponent } from "vue";
 export default defineComponent({
   props:['pageidx'],
+  data(){
+    return{
+      SlideCount:3 //从1开始
+    }
+  },
   computed:{
     active(){
       let activetag = this.$props.pageidx
       return activetag == 1 ? true : false;
+    },
+    ActiveSlide(){
+
     }
+  },
+  mounted(){
+    this.$emits("DeliverCount",this.SlideCount)
   }
 })
 </script>
 
 <style lang="scss" scoped>
-.container-main-page-b{
+  .container-main-page-b{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100%;
     width: 100%;
     position: relative;
-    .activeTextContainer{
-      position: absolute;
-      right: 1rem;
-      top: 2rem;
-      display: flex;
-      align-items: center;
-      opacity: 0.5;
-      transition: 1.2s;
-      transform: translate3d(2rem,0,0);
-      span{
-        margin: 0 .1rem;
+    .swiper-container{
+      .swiper-wrapper{
+        .swiper-slide{
+          transition: 1s ease;
+          opacity: 0;
+        }
+        .swiper-slide-active{
+          opacity: 1;
+        }
       }
     }
-    .page-a-index-warp {
-      z-index: 10;
-      font-size: 60px;
-      font-weight: 700;
-      color: white;
-      transition: 1s;
-      margin: 0 0 80px 0;
-      transform: translate3d(0,-200px,0);
-    }
-    .activeButn{
-      transition: 1.8s;
-      transform: translate3d(0,-30px,0);
-    }
-    .activeText{
-      opacity: 1;
-      transition: 1.2s;
-      transition-delay: 600ms;
-      transform: translate3d(0,0,0);
-    }
   }
+  // .contentContainer-b-active-enter-active,
+  // .contentContainer-b-active-leave-active
+  // {
+  //   transition: 1s ease;
+  // }
+  // .contentContainer-b-active-leave-to,
+  // .contentContainer-b-active-enter-from
+  // {
+  //   opacity: 1;
+  //   transform: translate3d(0,0,0);
+  // }
+  // .contentContainer-b-active-leave-to,
+  // .contentContainer-b-active-enter-from
+  // {
+  //   opacity: 0;
+  //   transform: translate3d(-2rem,0,0);
+  // }
+  
+  // .titleContainer-b-active-enter-active,
+  // .titleContainer-b-active-leave-active
+  // {
+  //   transition: 1s ease;
+  // }
+  // .titleContainer-b-active-leave-from,
+  // .titleContainer-b-active-enter-to
+  // {
+  //   opacity: 1;
+  //   transform: translate3d(0,0,0);
+  // }
+  // .titleContainer-b-active-leave-to,
+  // .titleContainer-b-active-enter-from
+  // {
+  //   opacity: 0;
+  //   transform: translate3d(2rem,0,0);
+  // }
 </style>
