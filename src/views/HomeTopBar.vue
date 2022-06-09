@@ -74,7 +74,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
   .topbarbox {
-    display: flex;
+    display: none;
     align-items: center;
     position:fixed;
     top:0px;
@@ -114,6 +114,7 @@ export default defineComponent({
     }
   }
   .activeTopBar{
+    display: flex;
     opacity: 1
   }
 </style>

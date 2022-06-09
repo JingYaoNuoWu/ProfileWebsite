@@ -154,16 +154,16 @@ export default defineComponent({
   min-height: 720px;
 }
 .carousel-item-page-a{
-  background-color: #2a1414;
+  background-color: #e6bfbf;
 }
 .carousel-item-page-b{
-  background-color: #4e314d;
+  background-color: #e4d0e3;
 }
 .carousel-item-page-c{
-  background-color: #494b6e;
+  background-color: #b1b3ca;
 }
 .carousel-item-page-d{
-  background-color: #5f4a4a;
+  background-color: #c7b6b6;
 }
 /*轮播图*/
 .swiper-container {

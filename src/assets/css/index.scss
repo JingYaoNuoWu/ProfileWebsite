@@ -43,6 +43,8 @@ header {
 
 html, body, #app {
   height: 100%;
+  user-select: none;
+  -webkit-user-drag: none ;
 }
 
 /*方便rem*/
