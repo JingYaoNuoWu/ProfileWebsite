@@ -1,6 +1,6 @@
 <template>
   <div class="container-main" >
-    <home-top-bar :pageidx="CarouselIndex" @changePage="b($event,x)"></home-top-bar>
+    <home-top-bar :pageidx="CarouselIndex" @changePage="b($event)"></home-top-bar>
     <el-carousel
     class="swiper-container" 
     direction="vertical" 
@@ -15,10 +15,10 @@
         <page-a :pageidx="CarouselIndex"></page-a>
       </el-carousel-item>
       <el-carousel-item class="carousel-item-page-b">
-        <page-b :pageidx="CarouselIndex" @DeliverCount="GetSlideCount(count)"></page-b>
+        <page-b :pageidx="CarouselIndex" :UsePageIndex=1 :SlideCurrentPage="SlideCurrentPage" @DeliverCount="GetSlideCount($event)" @DeliverSlideCurrentPage="GetSlideCurrentPage($event)"></page-b>
       </el-carousel-item>
       <el-carousel-item class="carousel-item-page-c">
-        <page-c></page-c>
+        <page-b :pageidx="CarouselIndex" :UsePageIndex=2 :SlideCurrentPage="SlideCurrentPage" @DeliverCount="GetSlideCount($event)" @DeliverSlideCurrentPage="GetSlideCurrentPage($event)"></page-b>
       </el-carousel-item>
       <el-carousel-item class="carousel-item-page-d">
         <page-d></page-d>
@@ -36,14 +36,14 @@ import pageD from "@/views/pageD.vue";
 import HomeTopBar from "@/views/HomeTopBar.vue";
 export default defineComponent({
   components:{
-    pageA,pageB,pageC,pageD,HomeTopBar
+    pageA,pageB,pageD,HomeTopBar
   },
-  emits:["changePage"],
+  emits:["DeliverCount","DeliverSlideCurrentPage","changePage"],
   data(){
     return{
       flag:true,//防抖节流
       CarouselIndex:0, //页面索引
-      SlideCurrentPage:0, //carousel定时器参数
+      SlideCurrentPage:1, //slide当前页 从1开始
       SlideCount:0 //第二页Slide的数量
     }
   },
@@ -136,8 +136,10 @@ export default defineComponent({
     },
     GetSlideCount(count){
       this.SlideCount = count
+    },
+    GetSlideCurrentPage(index){
+      this.SlideCurrentPage = index
     }
-    
   },
   mounted(){
     let queryObj = this.$route.query

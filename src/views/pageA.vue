@@ -1,7 +1,7 @@
 <template>
   <div class="container-main-page-a">
     <div class="page-a-index-warp" :class="{activeText:active}">
-      welcome to my home
+      Welcome Welcome
     </div>
     <div class="page-a-index-butn" :class="{activeButn:active}">
       
