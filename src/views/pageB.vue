@@ -97,39 +97,44 @@ export default defineComponent({
           position: absolute;
           top: 0;
           left: 0;
-          transition: 1s ;
+          // transition: 1s ;
           // transition-delay: .5s;
-          opacity: 0;
+          // opacity: 0;
         }
-        .swiper-slide-active{
-          opacity: 1;
-        }
+        // .swiper-slide-active{
+          // opacity: 1;
+        // }
       }
     }
   }
   .contentContainer-b-active-enter-active{
-    transition: 1s ease;
-    transition-delay: .2s;
+    transition: .5s ease;
+    // transition-delay: .5s;
   }
   .contentContainer-b-active-leave-active
   {
-    transition: 1s ease;
+    transition: .5s ease;
   }
   .contentContainer-b-active-leave-from,
   .contentContainer-b-active-enter-to
-  {
+  {  
+    transition-delay: .3s;
+
+    opacity: 1;
     transform: translate3d(0,0,0);
   }
   .contentContainer-b-active-leave-to,
   .contentContainer-b-active-enter-from
-  {
-    transition: 1s ease;
+  { 
+    // transition-delay: 1s;
+
+    opacity: 0;
+    transition: .3s ease;
     transform: translate3d(-2rem,0,0);
   }
   
   .titleContainer-b-active-enter-active{
     transition: .5s ease;
-    transition-delay: .2s;
   }
   .titleContainer-b-active-leave-active
   {
@@ -138,13 +143,19 @@ export default defineComponent({
   }
   .titleContainer-b-active-leave-from,
   .titleContainer-b-active-enter-to
-  {
+  { 
+    
+    transition-delay: .3s;
+    opacity: 1;
     transform: translate3d(0,0,0);
   }
   .titleContainer-b-active-leave-to,
   .titleContainer-b-active-enter-from
-  {
-    transition: 1s ease;
+  { 
+    // transition-delay: 1s;
+
+    opacity: 0;
+    transition: .3s ease;
     transform: translate3d(2rem,0,0);
   }
 </style>
