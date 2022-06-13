@@ -12,7 +12,7 @@
     :loop="false"
     >
       <el-carousel-item class="carousel-item-page-a">
-        <page-a :pageidx="CarouselIndex"></page-a>
+        <page-a :pageidx="CarouselIndex" @changePage="b($event)"></page-a>
       </el-carousel-item>
       <el-carousel-item class="carousel-item-page-b">
         <page-b :pageidx="CarouselIndex" :UsePageIndex=1 :SlideCurrentPage="SlideCurrentPage" @DeliverCount="GetSlideCount($event)" @DeliverSlideCurrentPage="GetSlideCurrentPage($event)"></page-b>
@@ -171,18 +171,21 @@ export default defineComponent({
   background-color: rgb(59, 44, 44);
   min-height: 720px;
 }
-.carousel-item-page-a{
-  background-color: #e6bfbf;
+.swiper-container{
+  background: #f8f9fb url(../assets/images/index.png) repeat;
 }
-.carousel-item-page-b{
-  background-color: #e4d0e3;
-}
-.carousel-item-page-c{
-  background-color: #b1b3ca;
-}
-.carousel-item-page-d{
-  background-color: #c7b6b6;
-}
+// .carousel-item-page-a{
+//   background-color: #e6bfbf;
+// }
+// .carousel-item-page-b{
+//   background-color: #e4d0e3;
+// }
+// .carousel-item-page-c{
+//   background-color: #b1b3ca;
+// }
+// .carousel-item-page-d{
+//   background-color: #c7b6b6;
+// }
 /*轮播图*/
 .swiper-container {
   height: 100%;

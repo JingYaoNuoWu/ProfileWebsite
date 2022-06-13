@@ -3,7 +3,7 @@
     <div class="page-a-index-warp" :class="{activeText:active}">
       Welcome Welcome
     </div>
-    <div class="page-a-index-butn" :class="{activeButn:active}">
+    <div class="page-a-index-butn" :class="{activeButn:active}" @click="$emit('changePage',{ $event , a:1})">
       
     </div>
     <div class="page-a-index-bg">
@@ -20,6 +20,9 @@ export default defineComponent({
     return{
       
     }
+  },
+  methods:{
+    
   },
   computed:{
     active(){

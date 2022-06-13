@@ -1,5 +1,6 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
+  publicPath:"/LeiYan.github.io/",
   transpileDependencies: true,
   chainWebpack: config => {
     config.plugin('define').tap(definitions => {
