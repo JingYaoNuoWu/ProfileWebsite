@@ -8,6 +8,13 @@ module.exports = defineConfig({
           NODE_HOST: '"http://localhost:8888"',
         });
         return definitions;
-    });
+    })
+  },
+  chainWebpack: config =>{
+    config.plugin('html')
+      .tap(args => {
+        args[0].title = "欢迎来到这里!";
+        return args;
+      })
   }
 })
