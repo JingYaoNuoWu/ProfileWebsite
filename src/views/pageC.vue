@@ -1,5 +1,10 @@
 <template>
-  <h1>3</h1>
+  <div class="pagec-container">
+    <div class="wapper">
+      <div class="textbox"></div>
+      <div class="imgbox"></div>
+    </div>
+  </div>
 </template>
 
 <script>
