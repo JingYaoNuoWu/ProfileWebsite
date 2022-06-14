@@ -15,7 +15,7 @@
         <page-a :pageidx="CarouselIndex" @changePage="b($event)"></page-a>
       </el-carousel-item>
       <el-carousel-item class="carousel-item-page-b">
-        <page-b :pageidx="CarouselIndex" :UsePageIndex=1 :SlideCurrentPage="SlideCurrentPage" @DeliverCount="GetSlideCount($event)" @DeliverSlideCurrentPage="GetSlideCurrentPage($event)"></page-b>
+        <!-- <page-b :pageidx="CarouselIndex" :UsePageIndex=1 :SlideCurrentPage="SlideCurrentPage" @DeliverCount="GetSlideCount($event)" @DeliverSlideCurrentPage="GetSlideCurrentPage($event)"></page-b> -->
       </el-carousel-item>
       <el-carousel-item class="carousel-item-page-c">
         <page-b :pageidx="CarouselIndex" :UsePageIndex=2 :SlideCurrentPage="SlideCurrentPage" @DeliverCount="GetSlideCount($event)" @DeliverSlideCurrentPage="GetSlideCurrentPage($event)"></page-b>
@@ -24,6 +24,7 @@
         <page-d></page-d>
       </el-carousel-item>
     </el-carousel>
+    <wheel-tip :pageidx="CarouselIndex" @changePage="changePage($event)"></wheel-tip>
   </div>
 </template>
 
@@ -34,9 +35,10 @@ import pageB from "@/views/pageB.vue";
 import pageC from "@/views/pageC.vue";
 import pageD from "@/views/pageD.vue";
 import HomeTopBar from "@/views/HomeTopBar.vue";
+import WheelTip from "@/views/WheelTip.vue";
 export default defineComponent({
   components:{
-    pageA,pageB,pageD,HomeTopBar
+    pageA,pageB,pageD,HomeTopBar,WheelTip
   },
   emits:["DeliverCount","DeliverSlideCurrentPage","changePage"],
   data(){
@@ -100,6 +102,31 @@ export default defineComponent({
         x.$event.preventDefault()
       }
       let index = x.a
+      switch(index){
+        case 0:
+          this.CarouselIndex = index
+          history.replaceState({},"","?page=1")
+          this.$refs.carousel.setActiveItem(0)
+        break;
+        case 1:
+          this.CarouselIndex = index
+          history.replaceState({},"","?page=2")
+          this.$refs.carousel.setActiveItem(1)
+        break;
+        case 2:
+          this.CarouselIndex = index
+          history.replaceState({},"","?page=3")
+          this.$refs.carousel.setActiveItem(2)
+        break;
+        case 3:
+          this.CarouselIndex = index
+          history.replaceState({},"","?page=4")
+          this.$refs.carousel.setActiveItem(3)
+        break;
+      }
+    },
+    changePage(index){
+      console.log(index);
       switch(index){
         case 0:
           this.CarouselIndex = index

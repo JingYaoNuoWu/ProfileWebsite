@@ -16,31 +16,30 @@
       </a>
       <div class="topbarlink" @click="$emit('changePage',{$event,a:1})">
         <span v-show="!(pageidx==1)">
-          2
+          简介
         </span>
         <b v-show="(pageidx==1)">
-          2
+          简介
         </b>
       </div>
       <div class="topbarlink" @click="$emit('changePage',{$event,a:2})">
         <span v-show="!(pageidx==2)">
-          3
+          记录
         </span>
         <b v-show="(pageidx==2)">
-          3
+          记录
         </b>
       </div>
       <div class="topbarlink" @click="$emit('changePage',{$event,a:3})">
         <span v-show="!(pageidx==3)">
-          4
+          应用
         </span>
         <b v-show="(pageidx==3)">
-          4
+          应用
         </b>
       </div>
       
     </div>
-    
   </div>
 </template>
 
@@ -56,9 +55,6 @@ export default defineComponent({
   methods:{
     jump(e){
       e.preventDefault()
-      console.log(this);
-      
-      
     }
   },
   computed:{
@@ -85,12 +81,18 @@ export default defineComponent({
     opacity: 0;
     transition: 100ms;
     justify-content: space-between;
-    div{
+    border: 1px solid #e6e7eb;
+    div,a{
       margin: 0 .3rem;
     }
     .topbarcontent{
       height: .25rem;
       display: flex;
+      a,a:link,a:visited,a:hover,a:active {
+        color: #000;
+        text-decoration: none;
+        font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu, sans-serif;
+      }
       .topbarlink{
         padding: .05rem;
         user-select: none;
@@ -104,6 +106,7 @@ export default defineComponent({
     .topbarlogo{
       a{
         display: inline-block;
+        text-decoration: none;
       }
       b{
         color: blue;

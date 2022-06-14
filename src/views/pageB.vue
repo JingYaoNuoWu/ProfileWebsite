@@ -54,8 +54,16 @@
         </div>
         <div class="swiper-slide" :class="{'swiper-slide-active':ActiveSlide == 3}"></div>
       </div>
-      <button @click="ChangeSlidePage(1)">==1==</button>
-      <button @click="ChangeSlidePage(2)">==2==</button>
+       <div class="butnbox">
+        <div class="butn" @click="ChangeSlidePage(1)">
+          <div class="imgcontainer imgcontainer1" :class="{active:UsePage == 1}">
+          </div>
+        </div>
+        <div class="butn" @click="ChangeSlidePage(2)">
+          <div class="imgcontainer imgcontainer2" :class="{active:UsePage == 2}">
+          </div>
+        </div>
+    </div>
     </div>
   </div>
 </template>
@@ -64,12 +72,10 @@
 import { defineComponent } from "vue";
 export default defineComponent({
   props:['pageidx','SlideCurrentPage','UsePageIndex'],
-  // emits:['DeliverSlideCurrentPage','DeliverCount'],
   data(){
     return{
       SlideCount:3, //从1开始
       UsePage:1
-      // this.UsePageIndex
     }
   },
   computed:{
@@ -97,29 +103,25 @@ export default defineComponent({
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 100%;
     width: 100%;
     position: relative;
     .swiper-container{
-      height: 6.15rem;
+      display: flex;
+      flex-direction: column;
+      height: 6.5rem;
       width: 15.5rem;
       .swiper-wrapper{
-        // height: rem;
         height: 100%;
-        width: 100%;
         position: relative;
-        // .animated{
-
-        // }
         .swiper-slide{
-          width: 100%;
-          height: 100%;
           .activeTextContainer{
             display: flex;
             justify-content: space-between;
             .contentContainer-b{
-              
               img{
+                display: block;
                 width: 12rem;
               }
             }
@@ -151,24 +153,44 @@ export default defineComponent({
               }
             }
           }
-          // float: left;
-          // overflow: hidden;
           position: absolute;
           top: 0;
           left: 0;
-          // transition: 1s ;
-          // transition-delay: .5s;
-          // opacity: 0;
         }
         .swiper-slide-active{
           z-index: 10;
         }
       }
+      .butnbox{
+      width: 100%;
+      display: flex;
+       .butn{
+         margin-right: .4rem;
+        .imgcontainer{
+          border: 1px solid transparent;
+        }
+        .imgcontainer:hover{
+          cursor: pointer;
+        }
+        .active{
+          border: 1px solid #242933;
+        }
+        .imgcontainer1{
+          width: .6rem;
+          height: .6rem;
+          background: url(@/assets/images/blog.svg) no-repeat 0/1.6rem 2rem;
+        }
+        .imgcontainer2{
+          width: .6rem;
+          height: .6rem;
+          background: url(@/assets/images/githublogo.svg) no-repeat 0/.56rem 2rem;
+        }
+      }
+    }
     }
   }
   .contentContainer-b-active-enter-active{
     transition: .5s ease;
-    // transition-delay: .5s;
   }
   .contentContainer-b-active-leave-active
   {
@@ -184,20 +206,16 @@ export default defineComponent({
   .contentContainer-b-active-leave-to,
   .contentContainer-b-active-enter-from
   { 
-    // transition-delay: 1s;
-
     opacity: 0;
     transition: .3s ease;
     transform: translate3d(-2rem,0,0);
   }
-  
   .titleContainer-b-active-enter-active{
     transition: .5s ease;
   }
   .titleContainer-b-active-leave-active
   {
     transition: 1s ease;
-
   }
   .titleContainer-b-active-leave-from,
   .titleContainer-b-active-enter-to
@@ -209,8 +227,6 @@ export default defineComponent({
   .titleContainer-b-active-leave-to,
   .titleContainer-b-active-enter-from
   { 
-    // transition-delay: 1s;
-
     opacity: 0;
     transition: .3s ease;
     transform: translate3d(2rem,0,0);
