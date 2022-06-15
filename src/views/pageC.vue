@@ -1,7 +1,9 @@
 <template>
   <div class="pagec-container">
     <div class="wapper">
-      <div class="textbox"></div>
+      <div class="textbox">
+
+      </div>
       <div class="imgbox"></div>
     </div>
   </div>
@@ -14,6 +16,17 @@ export default defineComponent({
 })
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+  .pagec-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 1rem;
+    .wapper{
+      width: 100%;
+      height: 100%;
+    }
+  }
 </style>

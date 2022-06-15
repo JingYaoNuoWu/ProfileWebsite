@@ -15,7 +15,7 @@
         <page-a :pageidx="CarouselIndex" @changePage="b($event)"></page-a>
       </el-carousel-item>
       <el-carousel-item class="carousel-item-page-b">
-        <!-- <page-b :pageidx="CarouselIndex" :UsePageIndex=1 :SlideCurrentPage="SlideCurrentPage" @DeliverCount="GetSlideCount($event)" @DeliverSlideCurrentPage="GetSlideCurrentPage($event)"></page-b> -->
+        <page-c></page-c>
       </el-carousel-item>
       <el-carousel-item class="carousel-item-page-c">
         <page-b :pageidx="CarouselIndex" :UsePageIndex=2 :SlideCurrentPage="SlideCurrentPage" @DeliverCount="GetSlideCount($event)" @DeliverSlideCurrentPage="GetSlideCurrentPage($event)"></page-b>
@@ -38,7 +38,7 @@ import HomeTopBar from "@/views/HomeTopBar.vue";
 import WheelTip from "@/views/WheelTip.vue";
 export default defineComponent({
   components:{
-    pageA,pageB,pageD,HomeTopBar,WheelTip
+    pageA,pageB,pageC,pageD,HomeTopBar,WheelTip
   },
   emits:["DeliverCount","DeliverSlideCurrentPage","changePage"],
   data(){
